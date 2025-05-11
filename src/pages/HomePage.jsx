@@ -2,26 +2,26 @@ import MovieList from "../components/movie/MovieList";
 
 const HomePage = () => {
   return (
-    <>
-      <section className="pb-20 movies-layout">
-        <h2 className="mb-10 text-3xl font-bold text-white capitalize">
-          Now playing
+    <div className="container">
+      <section className="pb-16 movies-layout">
+        <h2 className="mb-8 text-3xl font-bold text-white capitalize">
+          Phim Mới
         </h2>
-        <MovieList type="now_playing"></MovieList>
+        <MovieList type="v1"></MovieList>
       </section>
-      <section className="pb-20 movies-layout">
-        <h2 className="mb-10 text-3xl font-bold text-white capitalize">
-          Top rated movies
+      <section className="pb-16 movies-layout">
+        <h2 className="mb-8 text-3xl font-bold text-white capitalize">
+          Top Phim
         </h2>
-        <MovieList type="top_rated"></MovieList>
+        <MovieList type="v2"></MovieList>
       </section>
-      <section className="pb-20 movies-layout">
-        <h2 className="mb-10 text-3xl font-bold text-white capitalize">
-          Trending
+      <section className="pb-16 movies-layout">
+        <h2 className="mb-8 text-3xl font-bold text-white capitalize">
+          Phim Trending
         </h2>
-        <MovieList type="popular"></MovieList>
+        <MovieList type="v3"></MovieList>
       </section>
-    </>
+    </div>
   );
 };
 

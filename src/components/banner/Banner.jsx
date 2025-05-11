@@ -1,28 +1,78 @@
+import useSWR from "swr";
+import { Swiper, SwiperSlide } from "swiper/react";
+import Button from "../button/Button";
+import { useNavigate } from "react-router-dom";
+import { API, fetcher } from "../../configAPI/configAPI";
+
 const Banner = () => {
+  const { data } = useSWR(API.getMovieList("upcoming"), fetcher);
+  const movies = data?.results || [];
+  const navigate = useNavigate();
+
   return (
-    <section className="banner h-[250px]  md:h-[300px] lg:h-[350px] xl:h-[450px] w-full  mb-20 mt-2">
-      <div className="relative w-full h-full rounded-lg">
-        <div className="absolute inset-0 overlay bg-gradient-to-t from-[rgba(0,0,0,0.7)] top-[rgba(0,0,0,0.5)] rounded-lg"></div>
-        <img
-          src="https://t4.ftcdn.net/jpg/02/36/95/59/360_F_236955957_OEqpRqNjanfak01le5SiEiPU776glr30.jpg"
-          alt=""
-          className="object-cover w-full h-full rounded-lg"
-        />
-        <span className="absolute flex flex-col gap-4 right-5 top-5">
-          <i className="text-[50px] md:text-[70px] bx bx-film"></i>
-        </span>
-        <div className="absolute right-0 text-white -translate-y-1/2 top-1/2 ">
-          <span className=" inline-block mb-6 md:!text-[35px] lg:text-[40px] font-bold">
-            MOVIES NIGHT
-          </span>
-          <p className="md:!text-[20px] lg:text-[20px] w-[60%] font-bold mb-8 italic">
-            Unlimited <span className="text-[#e2d703] ">Movie</span> TVs Shows,
-            & More.
-          </p>
-        </div>
-      </div>
+    <section className="banner pt-[50px] md:pt-[75px] absolute left-0 right-0 h-[500px] page-container overflow-hidden">
+      <Swiper
+        grabCursor={"true"}
+        slidersPerView={"auto"}
+        className="swiper-banner"
+      >
+        {movies.length > 0 &&
+          movies.map((item) => (
+            <SwiperSlide key={item.id} className="p-5">
+              <div className="relative grid h-full grid-cols-2 gap-5 banner-wrapper">
+                <div className="">
+                  <h2 className="mb-3 font-bold text-white xs:text-xl md:text-3xl">
+                    {item.title}
+                  </h2>
+
+                  <p className="text-gray-300 text-fiveLine ">
+                    {item.overview}
+                  </p>
+                  <div className="flex flex-col gap-1 md:flex-row ">
+                    <span className="mt-2 text-gray-200">
+                      Lượt đánh giá:
+                      <span className="text-sm text-yellow-400 md:text-base">
+                        <i className="ml-2 mr-1 text-yellow-500 bx bxs-star"></i>
+                        <span className="text-gray-400">
+                          {Number(item.vote_average).toFixed(2)}
+                        </span>
+                      </span>
+                    </span>
+
+                    <span className="text-sm text-gray-400 md:text-base p-2">
+                      Phát hành: {item.release_date}
+                    </span>
+                  </div>
+
+                  <Button
+                    className="flex items-center gap-2 mt-6 text-sm text-white md:px-6 md:text-base w-max "
+                    onClick={() => navigate(`/movie/detail/${item.id}`)}
+                  >
+                    <i className="text-xl bx bx-play-circle"></i>
+                    Xem Trailer
+                  </Button>
+                </div>
+                <BannerItem item={item}></BannerItem>
+              </div>
+            </SwiperSlide>
+          ))}
+      </Swiper>
     </section>
   );
 };
+
+function BannerItem({ item }) {
+  const { poster_path } = item;
+  return (
+    <div className="relative w-full h-full rounded-lg">
+      <div className="absolute inset-0 overlay bg-gradient-to-t from-[rgba(0,0,0,0.5)] top-[rgba(0,0,0,0.5)] rounded-lg"></div>
+      <img
+        src={API.getImage(poster_path)}
+        alt=""
+        className="object-cover xs:h-[350px] w-full md:h-full "
+      />
+    </div>
+  );
+}
 
 export default Banner;

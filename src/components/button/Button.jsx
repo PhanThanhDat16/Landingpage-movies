@@ -1,4 +1,3 @@
-import React from "react";
 import { NavLink } from "react-router-dom";
 
 const Button = ({
@@ -42,4 +41,3 @@ const Button = ({
 };
 
 export default Button;
-// mt-auto

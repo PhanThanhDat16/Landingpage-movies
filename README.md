@@ -14,7 +14,7 @@
 
 ## Libs
 
-- SWR - React Hooks for Data Fetching [here](https://swr.vercel.app/)
+- Axios - React Hooks for Data Fetching [here](https://www.npmjs.com/package/axios)
 - TailwindCSS - A library for tailwind's css in ReactJS [here](https://styled-components.com/)
 
 ## Editor
@@ -33,12 +33,13 @@
 
 ### How to run app
 
+- `npm install`
 - `npm run dev`
 
 ## Feature
 
 - Load More 
-- Filter movies, tv show, actors
+- Filter tv shows, series, noneSeries,...
 
 ## Question
 

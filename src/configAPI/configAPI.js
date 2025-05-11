@@ -15,7 +15,7 @@ const endpointSearchMovie = "https://api.themoviedb.org/3/search/movie";
 const endpointSearchActor = "https://api.themoviedb.org/3/search/person";
 export const API = {
   getTVList: (page = 1) => `${endpointTV}?api_key=${apiKey}&page=${page}`,
-  getTVDetail: (id) => `${endpointTVDetail}/${id}?api_key=${apiKey}`,
+  // getTVDetail: (id) => `${endpointTVDetail}/${id}?api_key=${apiKey}`,
   getTVMeta: (id, type) =>
     `${endpointTVMeta}/${id}${
       type === "similar" ? "/similar" : ""

@@ -1,4 +1,3 @@
-import React from "react";
 import { useParams } from "react-router-dom";
 import useSWR from "swr";
 import { API, fetcher } from "../configAPI/configAPI";
@@ -69,7 +68,7 @@ const TVDetail = () => {
 
 function TVMeta({ type }) {
   const { id } = useParams();
-  const { data, error } = useSWR(API.getTVMeta(id, type), fetcher);
+  const { data } = useSWR(API.getTVMeta(id, type), fetcher);
   if (!data) return null;
   if (type === "logo") {
     const { production_companies } = data;

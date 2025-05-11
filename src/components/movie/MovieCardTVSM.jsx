@@ -1,4 +1,3 @@
-import React from "react";
 import { API } from "../../configAPI/configAPI";
 import Button from "../button/Button";
 

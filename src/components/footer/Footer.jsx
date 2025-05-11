@@ -1,5 +1,5 @@
-import Logo from "../components/logo/Logo";
 import { NavLink } from "react-router-dom";
+import Logo from "../logo/Logo";
 
 const Footer = () => {
   return (

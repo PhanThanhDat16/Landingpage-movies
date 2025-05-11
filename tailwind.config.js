@@ -16,6 +16,8 @@ export default {
       colors: {
         primary: "#F62682",
         secondary: "#6F5CF1",
+        titleMovie: "#c39913",
+        contentSecond: "#999999",
       },
     },
   },

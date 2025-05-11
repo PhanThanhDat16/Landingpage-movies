@@ -1,14 +1,14 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { Outlet, useLocation } from "react-router-dom";
-import SideBar from "./SideBar";
-import SideBarMenuMovie from "./SideBarMenuMovie";
-import Footer from "./Footer";
+import Footer from "../components/footer/Footer";
+import Header from "../components/header/Header";
+import Banner from "../components/banner/Banner";
+import SidebarMenu from "../components/sidebar/SidebarMenu";
 
 const Main = () => {
   const location = useLocation();
   const [visible, setVisible] = useState(false);
   const [showSidebar, setShowSidebar] = useState(false);
-  const sidebarRef = useRef(null);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -22,64 +22,36 @@ const Main = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  useEffect(() => {
-    const handleClickOutside = (e) => {
-      e.preventDefault();
-      if (
-        !sidebarRef.current.contains(e.target) &&
-        !e.target.matches(".open-sidebar")
-      ) {
-        setShowSidebar(false);
-      }
-    };
-
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
-  }, []);
-
   return (
     <>
-      <div>
-        <div className="flex justify-end px-4 pt-2 md:px-7 md:hidden">
-          <span
-            className="flex items-center justify-end px-2 py-1 rounded-md cursor-pointer open-sidebar w-max bg-primary"
-            onClick={() => setShowSidebar(!showSidebar)}
-          >
-            <i className="text-base text-white pointer-events-none bx bx-menu"></i>
-          </span>
+      <div className="p-5 bg-black">
+        <Header setShowSidebar={setShowSidebar} />
+        <div className={`${location.pathname === "/" ? "block" : "hidden"}`}>
+          <Banner />
         </div>
 
+        <SidebarMenu show={showSidebar} onClose={() => setShowSidebar(false)} />
+        {showSidebar && (
+          <div
+            onClick={() => setShowSidebar(false)}
+            className="fixed inset-0 bg-black bg-opacity-50 z-[900] md:hidden"
+          ></div>
+        )}
+
         <div
-          className={`md:grid ${
-            location.pathname === "/"
-              ? "lg:grid-cols-[230px_minmax(0,1fr)320px] md:grid-cols-[250px_minmax(0,1fr)]  "
-              : "grid-cols-[250px_minmax(0,1fr)] "
+          className={` ${
+            location.pathname === "/" ? "pt-[500px] md:pt-[555px]" : "pt-[55px]"
           }`}
         >
-          <div
-            ref={sidebarRef}
-            className={`fixed z-10 top-0 bottom-0 w-[230px] md:relative border-r-2 border-[#363437] bg-gradient-to-r from-[#181818] to-[#181818]/70 px-5 py-5 transition-all duration-500 ease-in-out md:translate-x-0 ${
-              showSidebar ? "translate-x-0" : "-translate-x-[100%]"
-            }`}
-          >
-            <SideBar></SideBar>
-          </div>
-          <div className="w-full px-4 md:px-7">
+          <div className="w-full ">
             <Outlet></Outlet>
           </div>
-          {location.pathname === "/" && (
-            <div className="border-l-2 border-[#363437] bg-gradient-to-l from-[#181818] to-[#181818]/50 px-5 py-5 hidden lg:block ">
-              <SideBarMenuMovie></SideBarMenuMovie>
-            </div>
-          )}
         </div>
       </div>
       {visible && (
         <div className="fixed bottom-0 scroll-header right-5 cursor-pointer p-2 h-10 w-10 bg-red-500 z-[1000]">
           <a
-            href="#traffic"
+            href="#root"
             className="flex items-center justify-center w-full h-full"
           >
             <i className="text-3xl bx bx-chevron-up"></i>

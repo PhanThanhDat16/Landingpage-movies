@@ -19,7 +19,7 @@ body {
 
 @layer components {
   .container {
-    max-width: 1280px;
+    max-width: 1200px;
     @apply mx-auto;
   }
 
@@ -28,9 +28,6 @@ body {
     height: auto;
   }
 
-  .movie-card {
-    height: 100%;
-  }
   .movie-scroll {
     width: 250px;
   }
@@ -72,4 +69,79 @@ body {
   60% {
     transform: translateY(-10px);
   }
+}
+
+.swiper-banner {
+  height: 530px;
+  overflow: hidden;
+}
+
+.banner-wrapper::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(
+    circle at center,
+    rgba(255, 255, 255, 0.15) 0%,
+    rgba(0, 0, 0, 1) 80%
+  );
+  pointer-events: none;
+  z-index: 1000;
+}
+
+.text-twoLine {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.text-fiveLine {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 5;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.scroll-box-y {
+  padding-right: 8px;
+}
+
+.scroll-box-y::-webkit-scrollbar {
+  width: 8px;
+}
+
+.scroll-box-y::-webkit-scrollbar-track {
+  background: #52525293;
+}
+
+.scroll-box-y::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 4px;
+}
+
+.scroll-box-y::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+.scroll-box-x::-webkit-scrollbar {
+  height: 8px;
+}
+
+.scroll-box-x::-webkit-scrollbar-track {
+  background: #52525293;
+}
+
+.scroll-box-x::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 4px;
+}
+
+.scroll-box-x::-webkit-scrollbar-thumb:hover {
+  background: #555;
 }

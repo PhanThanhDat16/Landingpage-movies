@@ -65,7 +65,7 @@ const Header = ({ setShowSidebar }) => {
   return (
     <div className="h-[75px] flex items-center bg-black fixed top-0 left-0 right-0 z-[100] border-b-2 border-[#363437] bg-gradient-to-r from-[#181818] to-[#181818]/70 px-5 py-5">
       <Logo className="!mb-0" />
-      <div className="flex justify-between flex-1 items-center">
+      <div className="flex items-center justify-between flex-1">
         {/* Desktop Menu */}
         <div className="hidden md:flex pl-8 gap-[20px] text-base font-semibold p-3">
           <NavLink
@@ -113,7 +113,7 @@ const Header = ({ setShowSidebar }) => {
                   <NavLink
                     key={country.slug}
                     to={`/quoc-gia/${country.slug}`}
-                    className="w-1/3 content-center hover:bg-pink-400 hover:text-black text-white text-sm text-center rounded-md p-1"
+                    className="content-center w-1/3 p-1 text-sm text-center text-white rounded-md hover:bg-pink-400 hover:text-black"
                     onClick={() => setShowCountryDropdown(false)}
                   >
                     {country.name}
@@ -137,7 +137,7 @@ const Header = ({ setShowSidebar }) => {
                   <NavLink
                     key={category.slug}
                     to={`/the-loai/${category.slug}`}
-                    className="w-1/3 content-center hover:bg-pink-400 hover:text-black text-white text-sm text-center rounded-md p-1"
+                    className="content-center w-1/3 p-1 text-sm text-center text-white rounded-md hover:bg-pink-400 hover:text-black"
                     onClick={() => setShowCategoryDropdown(false)}
                   >
                     {category.name}
@@ -151,11 +151,11 @@ const Header = ({ setShowSidebar }) => {
         {/* Desktop Search */}
         <div className="hidden md:flex pl-8 gap-[20px] text-base font-semibold relative items-center">
           <div className="relative">
-            <i className="bx bx-search-alt-2 text-stone-800 absolute left-3 top-1/2 -translate-y-1/2 text-2xl"></i>
+            <i className="absolute text-2xl -translate-y-1/2 bx bx-search-alt-2 text-stone-800 left-3 top-1/2"></i>
             <input
               type="text"
               name="keyword"
-              className="focus:ring-2 focus:ring-blue-500 focus:outline-none text-base text-black rounded-full py-2 pl-10 pr-5 font-semibold"
+              className="py-2 pl-10 pr-5 text-base font-semibold text-black rounded-full focus:ring-2 focus:ring-blue-500 focus:outline-none"
               aria-label="Tìm kiếm phim"
               placeholder="Tìm kiếm phim..."
               value={query}
@@ -168,7 +168,7 @@ const Header = ({ setShowSidebar }) => {
         {/* Mobile Search Icon */}
         <div className="flex justify-end px-4 pt-2 ml-auto md:hidden">
           <i
-            className="bx bx-search-alt-2 text-white text-2xl cursor-pointer"
+            className="text-2xl text-white cursor-pointer bx bx-search-alt-2"
             onClick={() => setShowSearch(!showSearch)}
           ></i>
         </div>
@@ -182,7 +182,7 @@ const Header = ({ setShowSidebar }) => {
             <input
               type="text"
               name="keyword"
-              className="w-full focus:ring-2 focus:ring-blue-500 focus:outline-none text-base text-black rounded-full py-2 pl-4 pr-5 font-semibold"
+              className="w-full py-2 pl-4 pr-5 text-base font-semibold text-black rounded-full focus:ring-2 focus:ring-blue-500 focus:outline-none"
               aria-label="Tìm kiếm phim"
               placeholder="Tìm kiếm phim..."
               value={query}
@@ -194,7 +194,10 @@ const Header = ({ setShowSidebar }) => {
 
         {/* Login Button */}
         <div className="hidden md:flex pl-8 gap-[20px] text-base font-semibold p-3">
-          <NavLink to="/login">Đăng nhập / Đăng ký</NavLink>
+          <NavLink to="/login" className="flex items-center gap-1">
+            <i className='bx bx-user'></i>
+            Đăng nhập
+          </NavLink>
         </div>
       </div>
 

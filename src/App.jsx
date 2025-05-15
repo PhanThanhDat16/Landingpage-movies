@@ -3,12 +3,10 @@ import { Route, Routes } from "react-router-dom";
 import Main from "./layouts/Main";
 import HomePage from "./pages/HomePage";
 import NotFoundPage from "./pages/NotFoundPage";
-import Login from "./pages/Login";
-import Signup from "./pages/Signup";
 
-const TVPage = lazy(() => import("./pages/TVPage"));
 // const TVDetail = lazy(() => import("./pages/TVDetail"));
 // const MoviePage = lazy(() => import("./pages/MoviePage"));
+const TVPage = lazy(() => import("./pages/TVPage"));
 const SeriesPage = lazy(() => import("./pages/SeriesPage"));
 const NonSeriesPage = lazy(() => import("./pages/NonSeriesPage"));
 const AnimePage = lazy(() => import("./pages/AnimePage"));
@@ -18,6 +16,8 @@ const MoviePlayDetail = lazy(() => import("./pages/MoviePlayDetail"));
 const CountryPage = lazy(() => import("./pages/CountryPage"));
 const CategoryPage = lazy(() => import("./pages/CategoryPage"));
 const SearchPage = lazy(() => import("./pages/SearchPage"));
+const SignInPage = lazy(() => import("./pages/Login"))
+const SignUpPage = lazy(() => import("./pages/Signup"))
 
 const App = () => {
   return (
@@ -82,8 +82,8 @@ const App = () => {
           <Route path="/tim-kiem" element={<SearchPage></SearchPage>}></Route>
         </Route>
 
-        <Route path="/login" element={<Login></Login>}></Route>
-        <Route path="/signup" element={<Signup></Signup>}></Route>
+        <Route path="/login" element={<SignInPage></SignInPage>}></Route>
+        <Route path="/signup" element={<SignUpPage></SignUpPage>}></Route>
         <Route path="*" element={<NotFoundPage></NotFoundPage>}></Route>
       </Routes>
     </Suspense>

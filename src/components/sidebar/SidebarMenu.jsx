@@ -15,7 +15,7 @@ const SidebarMenu = ({ show, onClose }) => {
   const countryRef = useRef(null);
   const categoryRef = useRef(null);
 
-  const fetchData = async (currentPage = 1, isReset = false) => {
+  const fetchData = async () => {
     setIsloading(true);
     try {
       const responseCountry = await countryAPI();
@@ -110,13 +110,13 @@ const SidebarMenu = ({ show, onClose }) => {
           >
             Quốc gia
           </span>
-          {showCountryDropdown && (
+          {!isLoading && showCountryDropdown && (
             <div className="flex flex-wrap w-full bg-[#252328] shadow-md rounded-md mt-2 transition-all duration-300">
               {countries.map((country) => (
                 <NavLink
                   key={country.slug}
                   to={`/quoc-gia/${country.slug}`}
-                  className="w-1/2 py-2 hover:bg-pink-400 hover:text-black text-white text-sm text-center rounded-md"
+                  className="w-1/2 py-2 text-sm text-center text-white rounded-md hover:bg-pink-400 hover:text-black"
                   onClick={() => setShowCountryDropdown(false)}
                 >
                   {country.name}
@@ -133,13 +133,13 @@ const SidebarMenu = ({ show, onClose }) => {
           >
             Thể loại
           </span>
-          {showCategoryDropdown && (
+          {!isLoading && showCategoryDropdown && (
             <div className="flex flex-wrap w-full bg-[#252328] shadow-md rounded-md mt-2 transition-all duration-300">
               {categories.map((category) => (
                 <NavLink
                   key={category.slug}
                   to={`/the-loai/${category.slug}`}
-                  className="w-1/2 py-2 hover:bg-pink-400 hover:text-black text-white text-sm text-center rounded-md"
+                  className="w-1/2 py-2 text-sm text-center text-white rounded-md hover:bg-pink-400 hover:text-black"
                   onClick={() => setShowCategoryDropdown(false)}
                 >
                   {category.name}
@@ -149,7 +149,10 @@ const SidebarMenu = ({ show, onClose }) => {
           )}
         </div>
 
-        <NavLink to="/login">Đăng nhập/ Đăng ký</NavLink>
+        <NavLink to="/login" className="flex items-center gap-1">
+             <i className='bx bx-user'></i> 
+            Đăng nhập
+        </NavLink>
       </nav>
     </div>
   );

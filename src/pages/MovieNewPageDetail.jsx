@@ -104,7 +104,7 @@ const MovieNewPageDetail = () => {
               )}
 
               <div className="flex items-center gap-2 mb-5">
-                <span className="flex items-center justify-center p-1 border rounded-full cursor-pointer md:p-3 border-contentSecond hover:bg-primary ">
+                <span className="flex items-center justify-center px-1 py-2 border rounded-full cursor-pointer md:py-3 md:px-4 border-contentSecond  ">
                   <i className="text-sm md:text-base bx bx-plus"></i>
                 </span>
                 <span className="text-sm font-bold md:text-base">

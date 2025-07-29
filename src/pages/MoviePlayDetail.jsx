@@ -111,7 +111,7 @@ const MoviePlayDetail = () => {
                         <Link
                           to={`/phim/${params.idMovie}/${item.slug}`}
                           key={item.slug}
-                          className="px-2 py-2 flex items-center justify-center text-center text-white transition-all rounded-lg cursor-pointer bg-[#999] hover:bg-slate-400"
+                          className="px-2 py-2 flex items-center justify-center text-center text-white transition-all rounded-lg cursor-pointer bg-[#99999940] hover:bg-slate-400"
                         >
                           {item.name}
                         </Link>

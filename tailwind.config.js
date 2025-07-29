@@ -14,7 +14,7 @@ export default {
         sans: ["DM Sans", "sans-serif"],
       },
       colors: {
-        primary: "#F62682",
+        primary: "#b91c1c",
         secondary: "#6F5CF1",
         titleMovie: "#c39913",
         contentSecond: "#999999",

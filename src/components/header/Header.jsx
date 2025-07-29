@@ -24,7 +24,8 @@ const Header = ({ setShowSidebar }) => {
       const responseCountry = await countryAPI();
       setCountries(responseCountry.data.slice(0, -2));
       const responseCategory = await categoryAPI();
-      setCategories(responseCategory.data);
+      const filterFilmsAdult = responseCategory.data.filter((f) => f.slug !== "phim-18")
+      setCategories(filterFilmsAdult);
     } catch (error) {
       console.log(error);
     }
@@ -63,7 +64,7 @@ const Header = ({ setShowSidebar }) => {
   };
 
   return (
-    <div className="h-[75px] flex items-center bg-black fixed top-0 left-0 right-0 z-[100] border-b-2 border-[#363437] bg-gradient-to-r from-[#181818] to-[#181818]/70 px-5 py-5">
+    <div className="h-[75px] flex items-center bg-black fixed top-0 left-0 right-0 z-[100] border-b-2 border-[#363437] bg-gradient-to-r from-[#181818] to-[#181818]/70 px-5 md:px-12 py-5">
       <Logo className="!mb-0" />
       <div className="flex items-center justify-between flex-1">
         {/* Desktop Menu */}
@@ -151,11 +152,11 @@ const Header = ({ setShowSidebar }) => {
         {/* Desktop Search */}
         <div className="hidden md:flex pl-8 gap-[20px] text-base font-semibold relative items-center">
           <div className="relative">
-            <i className="absolute text-2xl -translate-y-1/2 bx bx-search-alt-2 text-stone-800 left-3 top-1/2"></i>
+            <i className="absolute text-2xl -translate-y-1/2 bx bx-search-alt-2 text-[#ccc] left-3 top-1/2"></i>
             <input
               type="text"
               name="keyword"
-              className="py-2 pl-10 pr-5 text-base font-semibold text-black rounded-full focus:ring-2 focus:ring-blue-500 focus:outline-none"
+              className="py-2 pl-10 pr-5 text-base font-semibold text-white bg-transparent border  rounded-full focus:ring-2 focus:ring-blue-500 focus:outline-none"
               aria-label="Tìm kiếm phim"
               placeholder="Tìm kiếm phim..."
               value={query}

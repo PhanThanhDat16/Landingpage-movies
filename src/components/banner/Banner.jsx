@@ -18,7 +18,7 @@ const Banner = () => {
       >
         {movies.length > 0 &&
           movies.map((item) => (
-            <SwiperSlide key={item.id} className="p-5">
+            <SwiperSlide key={item.id} className="p-5 md:px-16">
               <div className="relative grid h-full grid-cols-2 gap-5 banner-wrapper">
                 <div className="">
                   <h2 className="mb-3 font-bold text-white xs:text-xl md:text-3xl">
